@@ -24,14 +24,9 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public Employee getEmployeesByID(String id) {
 
-        for (Employee e :empList)
-        {
-            if(e.getEmployeeID().equalsIgnoreCase(id))
-            {
-                return e;
 
-            }
-        }
-        return null;
+
+        return empList.stream().filter(employee -> employee.getEmployeeID().equalsIgnoreCase(id)).findFirst().get();
+
     }
 }
