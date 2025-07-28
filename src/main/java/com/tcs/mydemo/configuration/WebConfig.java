@@ -18,5 +18,6 @@ public class WebConfig implements WebMvcConfigurer {
         AntPathMatcher matcher=new AntPathMatcher();
         matcher.setCaseSensitive(false);
         configurer.setPathMatcher(matcher);
+        configurer.setUseTrailingSlashMatch(true);
     }
 }
