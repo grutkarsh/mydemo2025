@@ -15,9 +15,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee saveEmployee(Employee e) {
         boolean b = empList.stream().filter(employee -> employee.getEmployeeID().equalsIgnoreCase(e.getEmployeeID())).findAny().isPresent();
-        if(b)
-        {
-            throw new RuntimeException("id "+e.getEmployeeID() +" is already present");
+        if (b) {
+            throw new RuntimeException("id " + e.getEmployeeID() + " is already present");
         }
         empList.add(e);
         return e;
@@ -33,7 +32,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
         return empList.stream().filter(employee -> employee.getEmployeeID().equalsIgnoreCase(id))
-                .findFirst().orElseThrow(() ->new EmployeeNotFoundException("id "+id +" not present "));
+                .findFirst().orElseThrow(() -> new EmployeeNotFoundException("id " + id + " not present "));
+
+    }
+
+    @Override
+    public Employee deleteEmployee(String id) {
+        Employee employee1 = empList.stream()
+                .filter(employee -> employee.getEmployeeID().equalsIgnoreCase(id))
+                .findFirst()
+                .orElseThrow(() -> new EmployeeNotFoundException("ID " + id + " is not prsenet"));
+        empList.remove(employee1);
+        return employee1;
 
     }
 }
