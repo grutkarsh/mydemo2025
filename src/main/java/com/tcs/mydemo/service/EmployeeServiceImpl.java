@@ -15,4 +15,23 @@ public class EmployeeServiceImpl implements EmployeeService{
         empList.add(e);
         return e;
     }
+
+    @Override
+    public List<Employee> getEmployees() {
+        return empList;
+    }
+
+    @Override
+    public Employee getEmployeesByID(String id) {
+
+        for (Employee e :empList)
+        {
+            if(e.getEmployeeID().equalsIgnoreCase(id))
+            {
+                return e;
+
+            }
+        }
+        return null;
+    }
 }
