@@ -14,6 +14,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee saveEmployee(Employee e) {
+        boolean b = empList.stream().filter(employee -> employee.getEmployeeID().equalsIgnoreCase(e.getEmployeeID())).findAny().isPresent();
+        if(b)
+        {
+            throw new RuntimeException("id "+e.getEmployeeID() +" is already present");
+        }
         empList.add(e);
         return e;
     }
