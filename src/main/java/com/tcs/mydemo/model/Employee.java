@@ -1,11 +1,14 @@
 package com.tcs.mydemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Employee {
 
     private String employeeID;
     private String firstName;
     private String lastName;
     private String emailId;
+    @JsonIgnore
     private String department;
 
     public String getEmployeeID() {
