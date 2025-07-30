@@ -1,13 +1,12 @@
 package com.tcs.mydemo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table (name= "Employee")
-public class EmployeeDTO {
+public class EmployeeEntity {
     @Id
     private String employeeID;
     private String firstName;
