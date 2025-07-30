@@ -1,7 +1,9 @@
 package com.tcs.mydemo.service;
 
+import com.tcs.mydemo.entity.EmployeeDTO;
 import com.tcs.mydemo.model.Employee;
 import com.tcs.mydemo.repository.EmployeeRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,9 @@ public class EmployeeServiceImplv2 implements EmployeeService{
     @Override
     public Employee saveEmployee(Employee emp) {
         //employeeRepository.save(emp);
+        EmployeeDTO edto=new EmployeeDTO();
+        BeanUtils.copyProperties(emp,edto);
+        employeeRepository.save(edto);
         return emp;
     }
 

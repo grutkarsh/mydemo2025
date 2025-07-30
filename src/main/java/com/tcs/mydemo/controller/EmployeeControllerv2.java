@@ -20,8 +20,8 @@ public class EmployeeControllerv2 {
     private EmployeeService employeeService;
 
     @PostMapping
-    public void saveEmployee(@RequestBody Employee e)
+    public Employee saveEmployee(@RequestBody Employee e)
     {
-      employeeService.saveEmployee(e);
+      return employeeService.saveEmployee(e);
     }
 }
