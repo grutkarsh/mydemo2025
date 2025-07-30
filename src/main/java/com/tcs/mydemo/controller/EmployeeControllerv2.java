@@ -5,10 +5,9 @@ import com.tcs.mydemo.model.Employee;
 import com.tcs.mydemo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/employeesv2")
@@ -24,4 +23,25 @@ public class EmployeeControllerv2 {
     {
       return employeeService.saveEmployee(e);
     }
+
+    @GetMapping
+    public List<Employee> getEmployees()
+    {
+        List<Employee> employees = employeeService.getEmployees();
+        return employees;
+    }
+
+    @RequestMapping("/{id}")
+    public Employee getEmployeeByID(@PathVariable String id)
+    {
+        Employee employee = employeeService.getEmployeesByID(id);
+        return employee;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public Employee deleteEmployee(@PathVariable String id)
+    {
+        return employeeService.deleteEmployee(id);
+    }
+
 }
